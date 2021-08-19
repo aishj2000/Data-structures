@@ -1,0 +1,54 @@
+#include <iostream>
+
+using namespace std;
+
+void selectionSort(int arr[], int n)
+{
+    for(int i=0; i<n-1; i++)
+    {
+    //assumed minimum
+    int min=arr[i];
+    int minIndex=i;
+    
+    //find real minimum
+    for(int j=i+1;j<n;j++)
+    {
+        if(arr[j]<min)
+        {
+            min = arr[j];
+            minIndex = j;
+        }
+    }
+    
+    //swap min to correct position
+    int temp = arr[i];
+    arr[i]=min;
+    arr[minIndex]=temp;
+    
+    }
+    
+    for(int k=0; k<n; k++)
+    {
+        cout<<arr[k]<<" ";
+    }
+}
+
+int main()
+{
+    
+   int n;//take size of array from user
+   cin>>n;
+   
+   int arr[100];
+
+   //take input from user
+   
+   for(int i=0; i<n; i++)
+      cin>>arr[i]; 
+   }
+   
+   //sort array 
+   selectionSort(arr, n);
+
+    return 0;
+}
