@@ -1,0 +1,66 @@
+/******************************************************************************
+
+                              Online C++ Compiler.
+               Code, Compile, Run and Debug C++ program online.
+Write your code in this editor and press "Run" button to compile and execute it.
+
+*******************************************************************************/
+
+#include <iostream>
+
+using namespace std;
+
+int BinarySearch(int arr[], int n, int val)
+{
+    //for implementing binary search, elements have to be sorted
+    
+    int start = 0; //starting index of array
+    int end = n;   //last index of array
+    
+    while(start<=end)
+    {
+        int mid = (start+end)/2; //find middle element
+        
+        if(val==arr[mid])        //if value is equal to middle element
+        {
+            return mid;         //return index of middle element
+        }
+        
+        else if(val<arr[mid])   //value present in left half 
+        {
+            end = mid-1;        //update last index
+        }
+        
+        else if(val>arr[mid])  //value present in right half
+        {
+            start = mid+1;     //update first index
+        }
+        
+    }
+    
+    return -1; //value not present in array
+    
+}
+
+int main()
+{
+    cout<<"Enter size of array: ";
+    int n; //size of array
+    cin>>n;
+    
+    int arr[100];
+    
+    cout<<"Enter elements: ";
+    for(int i=0; i<n; i++)
+    {
+        cin>>arr[i];
+    }
+    
+    cout<<"Enter element to be found: "<<endl;
+    int val;
+    cin>>val;
+    
+    cout<<"Element was found at index: "<<BinarySearch(arr, n,val);
+
+    return 0;
+}
