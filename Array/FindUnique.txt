@@ -1,0 +1,53 @@
+You have been given an integer array/list(ARR) of size N. Where N is equal to [2M + 1].
+Now, in the given array/list, 'M' numbers are present twice and one number is present only once.
+You need to find and return that number which is unique in the array/list.
+
+************************************************************************************
+
+int findUnique(int *arr, int size)
+{
+    //Write your code here
+    if(size==1)  //only 1 element present
+    {
+        return arr[0];
+    }
+    int temp[size+1] = {0}; //declared temporary array
+    for(int i=0; i<size;i++)
+    {
+        temp[arr[i]] +=1;   //update value of array which is index of temp
+    }
+    for(int i=0; i<size; i++)
+    {
+        if(temp[i]==1)
+        {
+            return i;
+        }
+    }
+}
+
+#include <iostream>
+#include "solution.h"
+using namespace std;
+
+int main()
+{
+
+	int t;
+	cin >> t;
+
+	while (t--)
+	{
+		int size;
+		cin >> size;
+		int *input = new int[size];
+
+		for (int i = 0; i < size; ++i)
+		{
+			cin >> input[i];
+		}
+
+		cout << findUnique(input, size) << endl;
+	}
+
+	return 0;
+}
