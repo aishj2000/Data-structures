@@ -1,1 +1,1 @@
-#  C++ basic & Data-structures
+#  Data-structures and algorithms
