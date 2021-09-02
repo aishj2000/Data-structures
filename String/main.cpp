@@ -1,36 +1,31 @@
 #include <iostream>
-
 using namespace std;
 
-char RemoveX(char str[]){
-if(str[0]=='\0')
-{
-    return 0;
-}
 
-if(str[0]=='x'){
-    int i=1;
-    for(; str[i]!='\0'; i++){
-            str[i-1]=str[i];
+void removeConsecutiveDuplicates(char *input) {
+
+    if(input[0]=='\0'){
+        return;
     }
-    str[i-1]=str[i];
-    RemoveX(str);
+
+    if(input[0]!=input[1]){
+        removeConsecutiveDuplicates(input+1);
+    }
+    else{
+        int i=2;
+        for(; input[i]!='\0';i++){
+            input[i-1]=input[i];
+        }
+        input[i-1]=input[i];
+        removeConsecutiveDuplicates(input);
+
+    }
+
+
 }
-else{
-    RemoveX(str+1);
-}
-
-
-
-}
-
-int main()
-{
-    cout<<"Enter string: ";
-    char str[100];
-    cin>>str;
-    RemoveX(str);
-    cout<<"String is: "<<str<<endl;
-
-
+int main() {
+    char s[100000];
+    cin >> s;
+    removeConsecutiveDuplicates(s);
+    cout << s << endl;
 }
